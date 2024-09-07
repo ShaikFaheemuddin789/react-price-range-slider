@@ -3,15 +3,13 @@ import { useState, useEffect } from "react";
 const RangeAdjuster = () => {
   const [range, setRange] = useState(0);
   const [emoji, setEmoji] = useState("🥲");
+  const emojiList = ["🥰", "👍", "🤩", "❤️", "😂", "😎", "😇", "🙌", "🎉", "🔥"];
   function handleChange(e) {
     setRange(e.target.value);
   }
   useEffect(() => {
-    if (range == 10) {
-      setEmoji("🥰");
-    } else if (range == 20) setEmoji("👍");
-    else if (range >= 30 && range <= 40) setEmoji("🤩");
-    else if (range >= 50) setEmoji("❤️");
+    const randomEmoji = emojiList[Math.floor(Math.random() * emojiList.length)];
+    setEmoji(randomEmoji);
   }, [range]);
 
   return (
